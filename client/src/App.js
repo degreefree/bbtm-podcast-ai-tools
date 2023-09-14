@@ -1,9 +1,9 @@
-import logo from "./logo.svg";
+import logo from "./logo.PNG";
 import "./App.css";
-import Highlight from "./components/Highlight";
-import Podcast from "./components/Podcast";
+import Highlight from "./components/Highlights/Highlight";
 import { useState } from "react";
-import ShowNotes from "./components/ShowNotes";
+import Podcast from "./components/Podcast/Podcast";
+import Transcript from "./components/Transcribe/Transcribe";
 
 function App() {
   const [showForm, setShowForm] = useState("shownotes");
@@ -30,16 +30,10 @@ function App() {
           <a className="flex items-center" href="/">
             <img src={logo} className="h-12" alt="Clip2Gram Logo" />
             <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-              DF AI Tools
+              Balanced Body AI Tools
             </span>
           </a>
           <div className="flex md:order-2">
-            <button
-              type="button"
-              className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            >
-              Contact
-            </button>
             <button
               data-collapse-toggle="navbar-sticky"
               type="button"
@@ -104,7 +98,7 @@ function App() {
                 </li>
                 <li
                   onClick={() => {
-                    setShowForm("showNotes");
+                    setShowForm("transcript");
                     setHighlightIsActive(false);
                   }}
                 >
@@ -113,7 +107,7 @@ function App() {
                       !highlightIsActive ? "text-blue-500" : "text-white"
                     }
                   >
-                    Show Notes
+                    Transcript
                   </b>
                 </li>
               </ul>
@@ -171,7 +165,7 @@ function App() {
         ) : showForm === "podcast" ? (
           <Podcast />
         ) : (
-          <ShowNotes />
+          <Transcript />
         )}
       </div>
     </div>
