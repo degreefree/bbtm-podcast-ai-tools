@@ -70,8 +70,8 @@ const SocialMediaForm = ({
         <input
           type="text"
           id="description"
-          className="text-black p-2"
-          placeholder="Certifications vs college degrees"
+          className="p-2"
+          placeholder="The importance of health"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           required
@@ -79,7 +79,7 @@ const SocialMediaForm = ({
         <input
           type="number"
           id="episode-number"
-          className="text-black p-2"
+          className="p-2"
           placeholder="32"
           value={epNumber}
           onChange={(e) => setEpNumber(e.target.value)}
@@ -87,8 +87,8 @@ const SocialMediaForm = ({
         />
         <input
           type="submit"
-          value="Generate"
-          className="text-xl text-white bg-blue-950 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          value="GENERATE"
+          className="text-xl min-w-100 text-white"
         />
       </div>
     </form>

@@ -13,7 +13,7 @@ function Highlight() {
   const [tags, setTags] = useState("");
   const [epNumber, setEpNumber] = useState("");
   return (
-    <div className="mt-7 flex items-center justify-center">
+    <div className="p-10 flex items-center justify-center gap-5 min-w-full">
       <div>
         <FileUploadHighlight
           setCaption={setCaption}
@@ -24,7 +24,7 @@ function Highlight() {
           setEpNumber={setEpNumber}
           setTags={setTags}
         />
-        <div className="m-3"> --- OR --- </div>
+        <div className="m-3 text-center"> -- OR-- </div>
         <SocialMediaForm
           setCaption={setCaption}
           setTitle={setTitle}
@@ -35,6 +35,7 @@ function Highlight() {
         />
       </div>
       {!resultIsLoading ? (
+        <div> 
         <HighlightResults
           title={title}
           caption={caption}
@@ -42,6 +43,7 @@ function Highlight() {
           epNumber={epNumber}
           resultIsLoading={resultIsLoading}
         />
+        </div>
       ) : (
         <div className="loader-container flex justify-center items-center">
           <AtomicSpinner />

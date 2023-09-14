@@ -6,7 +6,7 @@ import Podcast from "./components/Podcast/Podcast";
 import Transcript from "./components/Transcribe/Transcribe";
 
 function App() {
-  const [showForm, setShowForm] = useState("shownotes");
+  const [showForm, setShowForm] = useState("highlights");
   const [isMenuOpen, setIsMenuOpen] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [highlightIsActive, setHighlightIsActive] = useState(true);
@@ -24,142 +24,46 @@ function App() {
   };
 
   return (
-    <div className="App flex flex-col justify-center items-center min-h-screen">
-      <nav className="bg-white dark:bg-gray-900 static w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600 sm: fixed md:fixed lg:fixed">
-        <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+    <div className ="flex flex-col items-center justify-center px-5 pt-5">
+      <nav className="bg-white statictop-0 left-0">
+        <div className="flex items-center justify-center gap-10">
           <a className="flex items-center" href="/">
-            <img src={logo} className="h-12" alt="Clip2Gram Logo" />
-            <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-              Balanced Body AI Tools
+            <img src={logo} className="h-12 mr-3" alt="Clip2Gram Logo" />
+            <span className="self-center text-2xl font-semibold tracking-tight whitespace-nowrap">
+              BalancedAI. 
             </span>
           </a>
-          <div className="flex md:order-2">
-            <button
-              data-collapse-toggle="navbar-sticky"
-              type="button"
-              className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-              aria-controls="navbar-sticky"
-              onClick={toggleModal}
-              aria-expanded={isMenuOpen}
-            >
-              <span className="sr-only">Open main menu</span>
-              <svg
-                className="w-5 h-5"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 17 14"
-              >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M1 1h15M1 7h15M1 13h15"
-                />
-              </svg>
-            </button>
-          </div>
-          <div
-            className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
-            id="navbar-sticky"
-          >
-            {isMenuOpen && (
-              <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+          <div className="flex items-center justify-between" >
+              <ul className="flex p-4 tracking-widest gap-5 text-gray-700">
                 <li
                   onClick={() => {
                     setShowForm("highlights");
                     setHighlightIsActive(true);
-                  }}
-                >
-                  <b
-                    className={
-                      highlightIsActive ? "text-blue-500" : "text-white"
-                    }
-                    aria-current="page"
-                  >
+                  }}>
                     Highlights
-                  </b>
+
                 </li>
 
                 <li
                   onClick={() => {
                     setShowForm("podcast");
                     setHighlightIsActive(false);
-                  }}
-                >
-                  <b
-                    className={
-                      !highlightIsActive ? "text-blue-500" : "text-white"
-                    }
-                  >
+                  }}>
                     Podcast
-                  </b>
                 </li>
                 <li
                   onClick={() => {
                     setShowForm("transcript");
                     setHighlightIsActive(false);
-                  }}
-                >
-                  <b
-                    className={
-                      !highlightIsActive ? "text-blue-500" : "text-white"
-                    }
-                  >
-                    Transcript
-                  </b>
+                  }} >
+                Transcript   
                 </li>
               </ul>
-            )}
           </div>
         </div>
-        {isModalOpen && (
-          <div className="modal">
-            <div className="modal-content">
-              <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-                <li
-                  onClick={() => {
-                    setShowForm("highlights");
-                    setHighlightIsActive(true);
-
-                    toggleModal();
-                  }}
-                >
-                  <b
-                    className={
-                      highlightIsActive ? highlightedClass : unHighlightedClass
-                    }
-                    aria-current="page"
-                  >
-                    Highlights
-                  </b>
-                </li>
-
-                <li
-                  onClick={() => {
-                    setShowForm("podcast");
-                    setHighlightIsActive(false);
-
-                    toggleModal();
-                  }}
-                >
-                  <b
-                    className={
-                      highlightIsActive ? unHighlightedClass : highlightedClass
-                    }
-                  >
-                    Podcast
-                  </b>
-                </li>
-              </ul>
-              <button onClick={toggleModal}>Close Modal</button>
-            </div>
-          </div>
-        )}
       </nav>
 
-      <div className="min-w-min main-content mt-5 flex flex-col md:flex-row items-center lg:flex-row">
+      <div className="min-w-full main-content bg-orange-200 mt-5 p-10 flex flex-col items-stretch justify-center rounded-3xl md:flex-row items-center lg:flex-row">
         {showForm === "highlights" ? (
           <Highlight />
         ) : showForm === "podcast" ? (
