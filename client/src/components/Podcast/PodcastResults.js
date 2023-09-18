@@ -23,7 +23,7 @@ function PodcastResults({
   return (
     <div className="results p-5 flex flex-col gap-2">
       <div className="min-w-full flex flex-col gap-2 items-center justify-center result">
-        <h3 className="text-md min-w-full text-white bg-blue-950 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+      <h3 className="text-md min-w-full text-white bg-orange-500 hover:bg-orange-400 rounded-lg text-center px-4 py-2">
           Episode Title(s):
         </h3>{" "}
         <div className="flex justify-center items-center">
@@ -41,7 +41,7 @@ function PodcastResults({
         </div>
       </div>
       <div className="min-w-full flex flex-col gap-2 items-center justify-center result">
-        <h3 className="text-md min-w-full text-white bg-blue-950 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+      <h3 className="text-md min-w-full text-white bg-orange-500 hover:bg-orange-400 rounded-lg text-center px-4 py-2">
           Podcast Episode Description:
         </h3>{" "}
         <div className="flex justify-center items-center">
@@ -68,16 +68,18 @@ function PodcastResults({
         </div>
       </div>
       <div className="min-w-full flex flex-col gap-2 items-center justify-center result">
-        <h3 className="text-md min-w-full text-white bg-blue-950 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+      <h3 className="text-md min-w-full text-white bg-orange-500 hover:bg-orange-400 rounded-lg text-center px-4 py-2">
           Tags
         </h3>{" "}
         <div className="flex justify-center items-center">{tags}</div>
       </div>
       <div className="min-w-full flex flex-col gap-2 items-center justify-center result">
-        <h3 className="text-md min-w-full text-white bg-blue-950 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+
+      
+      <h3 className="text-md min-w-full text-white bg-orange-500 hover:bg-orange-400 rounded-lg text-center px-4 py-2">
           Show Notes:
         </h3>{" "}
-        <div className="flex flex-col">
+        <div className="flex flex-col p-5">
           <span className="font-bold"> Episode Summary</span>
           {summary}
           <br /> <br />
@@ -160,9 +162,9 @@ function PodcastResults({
             </li>
             <br />
           </ul>
-          <div>
-            Contact Us:
-            <ul className="font-bold">
+        
+           <span className="font-bold"></span> Contact Us:
+            <ul>
               <li>
                 {" "}
                 <a href="mailto:hello@balancedbodymassage.org">
@@ -176,15 +178,15 @@ function PodcastResults({
               </li>
               <br />
             </ul>
-          </div>
+      
+      
         </div>
       </div>
       <div className="min-w-full flex flex-col gap-2 items-center justify-center result">
-        <h3 className="text-md min-w-full text-white bg-blue-950 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+      <h3 className="text-md min-w-full text-white bg-orange-500 hover:bg-orange-400 rounded-lg text-center px-4 py-2">
           Blog Post:
         </h3>{" "}
-        <div className="flex justify-center items-center">
-          <div className="flex justify-center items-center text-left">
+        <div className="flex justify-center items-center p-5">
             <div className="flex flex-col">
               <span className="text-2xl"> What You'll Learn: </span>
               <ul>
@@ -222,15 +224,15 @@ function PodcastResults({
                 onClick={() => copyContent(description)}
               />
             </div>
-          </div>
+     
         </div>
       </div>
       <div className="min-w-full flex flex-col gap-2 items-center justify-center result">
-        <h3 className="text-md min-w-full text-white bg-blue-950 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+      <h3 className="text-md min-w-full text-white bg-orange-500 hover:bg-orange-400 rounded-lg text-center px-4 py-2">
           Email:
         </h3>{" "}
-        <div className="flex justify-center items-center">
-          <div className="flex justify-center items-center text-left">
+        <div className="flex justify-center items-center p-5">
+        
             <div>
               Hello All, <br /> <br /> Trust you're in good spirits and feeling
               positive. The essence of this email is to equip you with practical
@@ -243,14 +245,14 @@ function PodcastResults({
               <br />
               <h3 className="text-2xl">
                 {" "}
-                New Pain To Movement Podcast Episode: "Insert Title Here"
+                New Pain To Movement Podcast Episode: ["Insert Title Here"]
               </h3>
               <div>{email.main_content}</div> <br /> <br />
               <h3 className="text-2xl"> A Quote To Ponder: {email.quote}</h3>
               <div>{email.quote_description}</div> <br />
               <h3 className="text-2xl">
                 {" "}
-                Brief Video Drill: "Insert Video Title Here + Link"{" "}
+                Brief Video Drill: ["Insert Video Title Here + Link"]
               </h3>
               <div>
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -272,7 +274,7 @@ function PodcastResults({
           </div>
         </div>
       </div>
-    </div>
+ 
   );
 }
 

@@ -85,7 +85,7 @@ const FileUploadPodcast = ({
     setResultIsLoading(true);
 
     try {
-      const response = await fetch("http://localhost:3000/podcast", {
+      const response = await fetch("/podcast", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

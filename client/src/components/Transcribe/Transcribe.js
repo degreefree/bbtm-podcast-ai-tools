@@ -6,7 +6,7 @@ import TranscribeResults from "./TranscribeResults";
 
 function Transcribe() {
   const [file, setFile] = useState(null);
-  const [transcript, setTranscript] = useState("");
+  const [transcript, setTranscript] = useState("----------");
   const [resultIsLoading, setResultIsLoading] = useState(false);
 
   return (

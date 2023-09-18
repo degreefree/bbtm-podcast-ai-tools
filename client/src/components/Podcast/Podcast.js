@@ -6,7 +6,7 @@ import PodcastResults from "./PodcastResults";
 
 function Podcast() {
   const [file, setFile] = useState(null);
-  const [summary, setSummary] = useState("lorem ipsum dolor");
+  const [summary, setSummary] = useState("-----------");
   const [resources, setResources] = useState({
     resources: ["------", "-------", "-----"],
   });
@@ -38,9 +38,9 @@ function Podcast() {
   });
 
   const [email, setEmail] = useState({
-    main_content: "meow",
-    quote: "meow-quote",
-    quote_description: "roar-meow",
+    main_content: "--------",
+    quote: "--------",
+    quote_description: "--------",
   });
 
   const [keyTopic, setKeyTopic] = useState("Topic Name");
