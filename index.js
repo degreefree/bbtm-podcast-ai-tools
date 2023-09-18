@@ -1,6 +1,5 @@
 import express from "express";
 import titleRoute from "./server/routes/title.js";
-import transcribeRoute from "./server/routes/transcribe.js";
 import podcastRoute from "./server/routes/Podcast.js";
 import transcribePodcastRoute from "./server/routes/podcastTranscribe.js";
 
