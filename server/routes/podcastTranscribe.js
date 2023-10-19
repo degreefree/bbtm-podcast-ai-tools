@@ -47,6 +47,7 @@ router.post("/", upload.any("file"), async (req, res) => {
   const audio_file1 = req.files[1];
   console.log(audio_file1);
   const buffer1 = audio_file1.buffer;
+  console.log("works");
 
   const response = await transcribeMp4([buffer1]);
   res.json({ response });

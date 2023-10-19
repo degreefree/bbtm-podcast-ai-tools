@@ -1,8 +1,9 @@
 import express from "express";
 import titleRoute from "./server/routes/title.js";
-import podRoute from "./server/routes/pod.js"
+import podRoute from "./server/routes/pod.js";
 import transcribePodcastRoute from "./server/routes/podcastTranscribe.js";
-
+import blogRoute from "./server/routes/blog.js";
+import emailRoute from "./server/routes/email.js";
 import path from "path";
 import { fileURLToPath } from "url";
 import bodyParser from "body-parser";
@@ -18,6 +19,8 @@ app.use(cors());
 app.use("/get", titleRoute);
 app.use("/transcribe", transcribePodcastRoute);
 app.use("/podcast", podRoute);
+app.use("/blog", blogRoute);
+app.use("/email", emailRoute);
 app.use(express.static(path.join(__dirname, "./client/build")));
 app.get("*", function (_, res) {
   res.sendFile(

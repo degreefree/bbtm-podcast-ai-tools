@@ -1,17 +1,14 @@
 import React, { useState } from "react";
 
-const FileUploadPodcast = ({
+const FileUploadBlog = ({
   setResultIsLoading,
   setFile,
   fileUploaded,
   setGuestInfo,
   setFileUploaded,
-  setTitle,
   setDescription,
-  setTags,
-  setResources,
-  setSummary,
-  setSteps,
+  setBlog,
+  setKeyTopic,
 }) => {
   const [transcript, setTranscript] = useState("");
 
@@ -36,15 +33,18 @@ const FileUploadPodcast = ({
   const handleFileChange = (event) => {
     event.preventDefault();
     const file = event.target.files[0];
-    setFile(file);
 
-    const reader = new FileReader();
-    reader.readAsText(file);
-    reader.onload = function () {
-      const textFromFile = reader.result;
-      setTranscript(textFromFile);
-      setFileUploaded(true);
-    };
+    if (file) {
+      setFile(file);
+
+      const reader = new FileReader();
+      reader.readAsText(file);
+      reader.onload = function () {
+        const textFromFile = reader.result;
+        setTranscript(textFromFile);
+        setFileUploaded(true);
+      };
+    }
   };
 
   const splitTranscriptIntoParagraphs = (transcript) => {
@@ -82,7 +82,7 @@ const FileUploadPodcast = ({
     setResultIsLoading(true);
 
     try {
-      const response = await fetch("http://localhost:3000/podcast", {
+      const response = await fetch("http://localhost:3000/blog", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -91,14 +91,10 @@ const FileUploadPodcast = ({
       });
 
       const data = await response.json();
-
-      setGuestInfo(data.bio);
-      setTitle(JSON.parse(data.titles)[0]);
+      console.log(data);
       setDescription(JSON.parse(data.description));
-      setTags(data.tags);
-      setSteps(JSON.parse(data.steps)[0]);
-      setResources(JSON.parse(data.resources)[0]);
-      setSummary(JSON.parse(data.summary));
+      setKeyTopic(removeOuterQuotes(data.key_topic));
+      setBlog(JSON.parse(data.blog));
     } catch (error) {
       console.error("An error occurred:", error);
     } finally {
@@ -136,4 +132,4 @@ const FileUploadPodcast = ({
   );
 };
 
-export default FileUploadPodcast;
+export default FileUploadBlog;

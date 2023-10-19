@@ -16,9 +16,20 @@
 .transcription-form{
   min-width: 80vw;
 }
+.main {
+  min-height: 85vh;
+}
 
+nav {
+  min-height: 5vh;
+}
+
+.transcript-result {
+  min-height: 40vh;
+  min-width: 40vw;
+}
 .result {
- max-width: 30vw;
+ max-width: 80vw;
   position: relative;
   display: flex;
   gap: 10px;

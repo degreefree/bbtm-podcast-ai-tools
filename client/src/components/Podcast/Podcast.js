@@ -28,22 +28,6 @@ function Podcast() {
     outro: "------------------",
   });
 
-  const [blog, setBlog] = useState({
-    intro: "..",
-    key_points: [""],
-    main_content: "..",
-    strategies: [""],
-    takeaways: [""],
-    conclusion: "..",
-  });
-
-  const [email, setEmail] = useState({
-    main_content: "--------",
-    quote: "--------",
-    quote_description: "--------",
-  });
-
-  const [keyTopic, setKeyTopic] = useState("Topic Name");
   const [fileUploaded, setFileUploaded] = useState(false);
   const [tags, setTags] = useState("------------------");
   const [resultIsLoading, setResultIsLoading] = useState(false);
@@ -52,7 +36,6 @@ function Podcast() {
     <div>
       <FileUploadPodcast
         setTitle={setTitle}
-        setBlog={setBlog}
         setDescription={setDescription}
         file={file}
         setFile={setFile}
@@ -61,9 +44,7 @@ function Podcast() {
         setFileUploaded={setFileUploaded}
         fileUploaded={fileUploaded}
         setGuestInfo={setGuestInfo}
-        setKeyTopic={setKeyTopic}
         setResources={setResources}
-        setEmail={setEmail}
         setSteps={setSteps}
         setSummary={setSummary}
       />
@@ -73,13 +54,10 @@ function Podcast() {
           title={title}
           summary={summary}
           steps={steps}
-          blog={blog}
           description={description}
           tags={tags}
           guestInfo={guestInfo}
-          keyTopic={keyTopic}
           resources={resources}
-          email={email}
         />
       ) : (
         <div className="loader-container flex justify-center items-center">

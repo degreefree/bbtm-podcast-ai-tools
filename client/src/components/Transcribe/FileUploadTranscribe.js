@@ -52,7 +52,7 @@ const FileUpload = ({ setTranscript, setResultIsLoading, file, setFile }) => {
     const data = await ffmpeg.readFile("input.mp3");
     const formData = new FormData(event.target);
     formData.append("file", new Blob([data.buffer]));
-    await fetch("/transcribe", {
+    await fetch("http://localhost:3000/transcribe", {
       method: "POST",
       body: formData,
       maxContentLength: Infinity,
