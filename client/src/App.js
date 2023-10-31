@@ -6,6 +6,7 @@ import Podcast from "./components/Podcast/Podcast";
 import Transcript from "./components/Transcribe/Transcribe";
 import Blog from "./components/Blog/Blog";
 import Email from "./components/Email/Email";
+import ShowNotes from "./components/ShowNotes/ShowNotes";
 
 function App() {
   const [showForm, setShowForm] = useState("highlights");
@@ -56,6 +57,14 @@ function App() {
               </li>
               <li
                 onClick={() => {
+                  setShowForm("shownotes");
+                  setHighlightIsActive(false);
+                }}
+              >
+                Show Notes
+              </li>
+              <li
+                onClick={() => {
                   setShowForm("transcript");
                   setHighlightIsActive(false);
                 }}
@@ -92,6 +101,8 @@ function App() {
           <Blog />
         ) : showForm === "email" ? (
           <Email />
+        ) : showForm === "shownotes" ? (
+          <ShowNotes />
         ) : (
           <Transcript />
         )}

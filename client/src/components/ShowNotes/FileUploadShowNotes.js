@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 
-const FileUploadBlog = ({
+const FileUploadShowNotes = ({
   setResultIsLoading,
   setFile,
   fileUploaded,
-
   setFileUploaded,
-  setDescription,
-  setBlog,
-  setKeyTopic,
+  setResources,
+  setSummary,
+  setSteps,
 }) => {
   const [transcript, setTranscript] = useState("");
 
@@ -33,18 +32,15 @@ const FileUploadBlog = ({
   const handleFileChange = (event) => {
     event.preventDefault();
     const file = event.target.files[0];
+    setFile(file);
 
-    if (file) {
-      setFile(file);
-
-      const reader = new FileReader();
-      reader.readAsText(file);
-      reader.onload = function () {
-        const textFromFile = reader.result;
-        setTranscript(textFromFile);
-        setFileUploaded(true);
-      };
-    }
+    const reader = new FileReader();
+    reader.readAsText(file);
+    reader.onload = function () {
+      const textFromFile = reader.result;
+      setTranscript(textFromFile);
+      setFileUploaded(true);
+    };
   };
 
   const splitTranscriptIntoParagraphs = (transcript) => {
@@ -71,7 +67,7 @@ const FileUploadBlog = ({
     if (currentParagraph.trim() !== "") {
       paragraphs.push(currentParagraph.trim());
     }
-
+    console.log(paragraphs);
     return paragraphs;
   };
 
@@ -82,7 +78,8 @@ const FileUploadBlog = ({
     setResultIsLoading(true);
 
     try {
-      const response = await fetch("/blog", {
+      console.log("fetching");
+      const response = await fetch("/shownotes", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -91,10 +88,9 @@ const FileUploadBlog = ({
       });
 
       const data = await response.json();
-      console.log(data);
-      setDescription(JSON.parse(data.description));
-      setKeyTopic(removeOuterQuotes(data.key_topic));
-      setBlog(JSON.parse(data.blog));
+      setSteps(JSON.parse(data.steps)[0]);
+      setResources(JSON.parse(data.resources)[0]);
+      setSummary(data.summary);
     } catch (error) {
       console.error("An error occurred:", error);
     } finally {
@@ -132,4 +128,4 @@ const FileUploadBlog = ({
   );
 };
 
-export default FileUploadBlog;
+export default FileUploadShowNotes;

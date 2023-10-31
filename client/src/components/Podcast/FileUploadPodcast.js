@@ -4,14 +4,10 @@ const FileUploadPodcast = ({
   setResultIsLoading,
   setFile,
   fileUploaded,
-  setGuestInfo,
   setFileUploaded,
   setTitle,
   setDescription,
   setTags,
-  setResources,
-  setSummary,
-  setSteps,
 }) => {
   const [transcript, setTranscript] = useState("");
 
@@ -71,7 +67,7 @@ const FileUploadPodcast = ({
     if (currentParagraph.trim() !== "") {
       paragraphs.push(currentParagraph.trim());
     }
-
+    console.log(paragraphs);
     return paragraphs;
   };
 
@@ -82,7 +78,8 @@ const FileUploadPodcast = ({
     setResultIsLoading(true);
 
     try {
-      const response = await fetch("http://localhost:3000/podcast", {
+      console.log("fetching");
+      const response = await fetch("/podcast", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -91,14 +88,9 @@ const FileUploadPodcast = ({
       });
 
       const data = await response.json();
-
-      setGuestInfo(data.bio);
       setTitle(JSON.parse(data.titles)[0]);
-      setDescription(JSON.parse(data.description));
+      setDescription(JSON.parse(data.description)[0]);
       setTags(data.tags);
-      setSteps(JSON.parse(data.steps)[0]);
-      setResources(JSON.parse(data.resources)[0]);
-      setSummary(JSON.parse(data.summary));
     } catch (error) {
       console.error("An error occurred:", error);
     } finally {
