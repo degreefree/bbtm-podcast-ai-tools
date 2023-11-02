@@ -5,6 +5,7 @@ import transcribePodcastRoute from "./server/routes/podcastTranscribe.js";
 import blogRoute from "./server/routes/blog.js";
 import emailRoute from "./server/routes/email.js";
 import showNotesRoute from "./server/routes/shownotes.js";
+import threadsRoute from "./server/routes/threads.js";
 import path from "path";
 import { fileURLToPath } from "url";
 import bodyParser from "body-parser";
@@ -23,6 +24,7 @@ app.use("/podcast", podRoute);
 app.use("/blog", blogRoute);
 app.use("/email", emailRoute);
 app.use("/shownotes", showNotesRoute);
+app.use("/threads", threadsRoute);
 app.use(express.static(path.join(__dirname, "./client/build")));
 app.get("*", function (_, res) {
   res.sendFile(

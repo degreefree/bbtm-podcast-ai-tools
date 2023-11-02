@@ -7,6 +7,7 @@ import Transcript from "./components/Transcribe/Transcribe";
 import Blog from "./components/Blog/Blog";
 import Email from "./components/Email/Email";
 import ShowNotes from "./components/ShowNotes/ShowNotes";
+import Threads from "./components/Threads/Threads";
 
 function App() {
   const [showForm, setShowForm] = useState("highlights");
@@ -87,6 +88,14 @@ function App() {
               >
                 Email
               </li>
+              <li
+                onClick={() => {
+                  setShowForm("threads");
+                  setHighlightIsActive(false);
+                }}
+              >
+                Threads
+              </li>
             </ul>
           </div>
         </div>
@@ -103,6 +112,8 @@ function App() {
           <Email />
         ) : showForm === "shownotes" ? (
           <ShowNotes />
+        ) : showForm === "threads" ? (
+          <Threads />
         ) : (
           <Transcript />
         )}
